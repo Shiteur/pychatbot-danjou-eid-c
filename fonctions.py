@@ -74,9 +74,9 @@ def TF(chaine):
     mot = chaine.split(" ")
     for i in range(len(mot)):
         if mot[i] in frequency.keys():
-            frequency[mot[i]] += 1
+            frequency[mot[i]] += 1/len(mot)
         else:
-            frequency[mot[i]] = 1
+            frequency[mot[i]] = 1/len(mot)
     return frequency
 
 def IDF(cleaned):
