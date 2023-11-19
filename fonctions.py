@@ -72,6 +72,7 @@ def surpession_ponctuation():
 def TF(chaine):
     frequency = {}
     mot = chaine.split(" ")
+    mot[-1] = mot[-1][:-1]
     for i in range(len(mot)):
         if mot[i] in frequency.keys():
             frequency[mot[i]] += 1/len(mot)
@@ -86,6 +87,7 @@ def IDF(cleaned):
         with open(cleaned+"/"+files[i], "r") as f1:
             line = f1.readline()
             while line != "":
+                
                 k = TF(line)
                 for keys in k.keys():
                     if keys in IDF_score.keys() :
@@ -97,7 +99,3 @@ def IDF(cleaned):
         IDF_score[keys] = math.log(len(files)/IDF_score[keys]) 
     return IDF_score
 print(IDF("cleaned"))
-
-    
-
-        
