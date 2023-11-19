@@ -83,6 +83,21 @@ def IDF(cleaned):
     IDF_score = {}
     files = list_of_files(cleaned, "txt")
     for i in range(len(files)):
-        with open(cleaned+)
+        with open(cleaned+"/"+files[i], "r") as f1:
+            line = f1.readline()
+            while line != "":
+                k = TF(line)
+                for keys in k.keys():
+                    if keys in IDF_score.keys() :
+                        IDF_score[keys] += k[keys]
+                    else :
+                        IDF_score[keys] = k[keys]
+                line = f1.readline()        
+    for keys in IDF_score.keys() :
+        IDF_score[keys] = math.log(len(files)/IDF_score[keys]) 
+    return IDF_score
+print(IDF("cleaned"))
+
+    
 
         
