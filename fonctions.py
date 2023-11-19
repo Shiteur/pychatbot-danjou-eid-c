@@ -1,4 +1,5 @@
 import os
+import math
 def list_of_files(directory, extension):
     files_names = []
     for filename in os.listdir(directory):
@@ -67,3 +68,21 @@ def surpession_ponctuation():
                 line = f1.readline()
         os.remove("cleaned/"+i)                         #supprime le fichier lut
         os.rename("cleaned/new.txt", "cleaned/"+i)      #renome le nouveau fichier avec le nom de l'ancien fichier
+
+def TF(chaine):
+    frequency = {}
+    mot = chaine.split(" ")
+    for i in range(len(mot)):
+        if mot[i] in frequency.keys():
+            frequency[mot[i]] += 1
+        else:
+            frequency[mot[i]] = 1
+    return frequency
+
+def IDF(cleaned):
+    IDF_score = {}
+    files = list_of_files(cleaned, "txt")
+    for i in range(len(files)):
+        with open(cleaned+)
+
+        
