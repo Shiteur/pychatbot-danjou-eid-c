@@ -98,4 +98,25 @@ def IDF(cleaned):
     for keys in IDF_score.keys() :
         IDF_score[keys] = math.log(len(files)/IDF_score[keys]) 
     return IDF_score
-print(IDF("cleaned"))
+
+def TF_IDF(repertoire):
+    list_mot=[]
+    matrice=[]
+    IDF_score = IDF(repertoire)
+    files = list_of_files(repertoire, "txt")
+    for key in IDF_score.keys():
+        TF_score=[]
+        for i in range(len(files)):
+            val_TF=0
+            with open(repertoire+"/"+files[i], "r") as f1:
+                line = f1.readline()
+                while line != "":
+                    k = TF(line)
+                    if key in k.keys() :
+                        val_TF += k[key]
+                    line = f1.readline()
+            TF_score.append(val_TF*IDF_score[key])
+        matrice.append(TF_score)
+        list_mot.append(key)
+    return (list_mot, matrice)
+print(TF_IDF("cleaned"))
