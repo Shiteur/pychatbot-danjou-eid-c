@@ -7,7 +7,7 @@ def list_of_files(directory, extension):
             files_names.append(filename)
     return files_names
 
-def nom_président(files_names):
+def nom_president(files_names):
     president = []
     for  i in range(len(files_names)):
         president.append(files_names[i][11:-4]) # extrait la partie nom+numéro du nom de fichier
@@ -15,13 +15,13 @@ def nom_président(files_names):
             president[i]= president[i][:-1]
     return president
 
-def prénom_président(nom):
+def prenom_president(nom):
     prenom={"Chirac":"Jacques","Giscard dEstaing":"Valéry","Mitterrand":"François","Sarkozy":"Nicolas","Macron":"Emmanuel","Hollande":"François"}
     for cle in prenom.keys():
         if nom == cle:
             return nom,prenom[nom]
 
-def retourne_nom_président(liste_nom):
+def retourne_nom_president(liste_nom):
     i=0
     while i < len(liste_nom):
         if liste_nom[i] in liste_nom[i+1:]:
@@ -217,3 +217,35 @@ def ecologie():
                 if president[i]== president_nom[j] and j<nom:
                     nom=j
     print(f"Le premier président qui a parlé de l'écologie est {president_nom[nom]}.")
+
+def mots_evoques():
+    mots_non_important = mot_pas_important()
+    files = list_of_files("cleaned", "txt")
+    temp_mot_1 = []
+    for i in range(len(files)):
+        with open("cleaned"+"/"+files[i], "r") as f1:
+            temp_mot_2 = []
+            line = f1.readline().split(' ')
+            for mot in line :
+                if mot not in temp_mot_2:
+                    if mot not in mots_non_important:
+                        temp_mot_2.append(mot)
+        if i != 0 :
+            for mot in temp_mot_1 :
+                if mot not in temp_mot_2 :
+                    temp_mot_1.remove(mot)
+        else:
+            temp_mot_1 = temp_mot_2
+    print(temp_mot_1)
+       
+
+    
+
+
+
+
+            
+
+            
+
+ 
