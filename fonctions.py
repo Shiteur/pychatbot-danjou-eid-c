@@ -222,19 +222,33 @@ def mots_evoques():
     mots_non_important = mot_pas_important()
     files = list_of_files("cleaned", "txt")
     temp_mot_1 = []
+    temp_mot_double_discourt = []
     for i in range(len(files)):
+        temp_mot_2 = []
         with open("cleaned"+"/"+files[i], "r") as f1:
-            temp_mot_2 = []
-            line = f1.readline().split(' ')
-            for mot in line :
-                if mot not in temp_mot_2:
-                    if mot not in mots_non_important:
-                        temp_mot_2.append(mot)
-        if i != 0 :
+            line= f1.readline()
+            line=line[:-1]
+            while line !="":
+                line = line.split(' ')
+                for mot in line :
+                    if mot not in temp_mot_2:
+                        if mot not in mots_non_important:
+                            temp_mot_2.append(mot)
+                line = f1.readline()
+                line=line[:-1]
+        if files[i][-5]=="1":
+            temp_mot_double_discourt = temp_mot_2
+        elif i == 6:
             for mot in temp_mot_1 :
-                if mot not in temp_mot_2 :
+                if not(mot in temp_mot_2 or mot in temp_mot_double_discourt):
+                    temp_mot_1.remove(mot)
+        elif files[i][-5]!="2":
+            for mot in temp_mot_1 :
+                if not(mot in temp_mot_2):
                     temp_mot_1.remove(mot)
         else:
+            for mot in temp_mot_double_discourt:
+                if not(mot in temp_mot_2):
+                    temp_mot_2.append(mot)
             temp_mot_1 = temp_mot_2
     print(temp_mot_1)
-    

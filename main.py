@@ -14,8 +14,9 @@ def menu():
     print("4. Indiquer le(s) nom(s) du (des) président(s) qui a (ont) parlé de la « Nation »")
     print("5. Indiquer le premier président à parler du climat et/ou de l'écologie")
     print("6. Mot(s) évoqués par tous les présidents (hormis les mots non importants)")
-
-while True:
+    print("7. Pour quitter.")
+start=True
+while start:
     menu()
     choix = input("Choisissez une option: ")
     if choix == "1":
@@ -33,6 +34,9 @@ while True:
         ecologie()
     elif choix == "6":
         mots_evoques()
+    elif choix == "7":
+        print("Vous quitter l'aplication")
+        start=False
     else:
         print("Choix invalide.")
 
