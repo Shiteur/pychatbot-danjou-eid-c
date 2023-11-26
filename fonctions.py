@@ -203,7 +203,7 @@ def nation():
 def ecologie():
     president_nom=["Giscard dEstaing","Mitterrand","Chirac","Hollande","Sarkozy","Macron"]
     president = list_of_files("cleaned", "txt")
-    president = nom_président(president)
+    president = nom_president(president)
     tf_idf = TF_IDF("cleaned")
     n=0
     i=0
