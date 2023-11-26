@@ -237,15 +237,4 @@ def mots_evoques():
         else:
             temp_mot_1 = temp_mot_2
     print(temp_mot_1)
-       
-
-    
-
-
-
-
-            
-
-            
-
- 
+    #test
