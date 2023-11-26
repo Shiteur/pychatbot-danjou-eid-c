@@ -198,4 +198,22 @@ def nation():
             del(president[i])
             del(tf_idf[1][n][i])
     president=retourne_nom_président(president)
-    print(f"le nom des présidents qui ont le parler de la nation sont {president} et celui qui en à le plus parler est {nom}")
+    print(f"Le nom des présidents qui ont le parler de la nation sont {president} et celui qui en à le plus parler est {nom}.")
+
+def ecologie():
+    president_nom=["Giscard dEstaing","Mitterrand","Chirac","Hollande","Sarkozy","Macron"]
+    president = list_of_files("cleaned", "txt")
+    president = nom_président(president)
+    tf_idf = TF_IDF("cleaned")
+    n=0
+    i=0
+    while i <len(tf_idf[0]) and tf_idf[0][i]!="Ã©cologique":
+        i+=1
+    n=i
+    nom=len(president_nom)
+    for i in range(len(tf_idf[1][n])):
+        if tf_idf[1][n][i]!=0.0:
+            for j in range(len(president_nom)):
+                if president[i]== president_nom[j] and j<nom:
+                    nom=j
+    print(f"Le premier président qui a parlé de l'écologie est {president_nom[nom]}.")
