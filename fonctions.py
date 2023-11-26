@@ -179,7 +179,7 @@ def mot_plus_repeter_par_chirac():
 
 def nation():
     president = list_of_files("cleaned", "txt")
-    president = nom_président(president)
+    president = nom_president(president)
     tf_idf = TF_IDF("cleaned")
     n=0
     i=0
@@ -197,7 +197,7 @@ def nation():
         else:
             del(president[i])
             del(tf_idf[1][n][i])
-    president=retourne_nom_président(president)
+    president=retourne_nom_president(president)
     print(f"Le nom des présidents qui ont le parler de la nation sont {president} et celui qui en à le plus parler est {nom}.")
 
 def ecologie():
