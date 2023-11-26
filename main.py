@@ -35,7 +35,7 @@ while start:
     elif choix == "6":
         mots_evoques()
     elif choix == "7":
-        print("Vous quitter l'aplication")
+        print("Vous quitter l'aplication.")
         start=False
     else:
         print("Choix invalide.")
