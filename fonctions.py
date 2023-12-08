@@ -35,7 +35,7 @@ def convertion_minuscule():
     if "cleaned" not in os.listdir():           #recherche si le  répertoire cleaned n'existe pas dans le projet
         os.mkdir("cleaned")                     #création du répertoire cleaned dans ce cas
     for i in list_text:
-        with open("speeches/"+i, "r") as f1, open("cleaned/"+i, "w") as f2:
+        with open("speeches/"+i, "r", encoding="utf-8") as f1, open("cleaned/"+i, "w", encoding="utf-8") as f2:
             line= f1.readline()
             while line !="":
                 line2=""
@@ -50,7 +50,7 @@ def convertion_minuscule():
 def surpession_ponctuation():
     list_text = list_of_files("cleaned", "txt")#récuprère la liste des fichier .txt du répertoir cleaned
     for i in list_text:
-        with open("cleaned/"+i, "r") as f1, open("cleaned/new.txt", "w") as f2: #écrit le contenu sans la ponctuation dans un autre fichier
+        with open("cleaned/"+i, "r", encoding="utf-8") as f1, open("cleaned/new.txt", "w", encoding="utf-8") as f2: #écrit le contenu sans la ponctuation dans un autre fichier
             line = f1.readline()
             while line!="":
                 line2=""
@@ -84,7 +84,7 @@ def IDF(cleaned):
     IDF_score = {}
     files = list_of_files(cleaned, "txt")
     for i in range(len(files)):
-        with open(cleaned+"/"+files[i], "r") as f1:
+        with open(cleaned+"/"+files[i], "r", encoding="utf-8") as f1:
             line = f1.readline()
             mot=[]
             while line != "":               
@@ -111,7 +111,7 @@ def TF_IDF(repertoire):
         TF_score=[]
         for i in range(len(files)):
             val_TF=0
-            with open(repertoire+"/"+files[i], "r") as f1:
+            with open(repertoire+"/"+files[i], "r", encoding="utf-8") as f1:
                 line = f1.readline()
                 while line != "":
                     k = TF(line)
@@ -157,7 +157,7 @@ def mot_plus_repeter_par_chirac():
     mot_plus_dit= []
     files = list_of_files("cleaned", "txt")
     for i in range(0,2):                            #calcule le nombre de fois que chriac à prononcé un mot
-        with open("cleaned/"+files[i], "r") as f1:
+        with open("cleaned/"+files[i], "r", encoding="utf-8") as f1:
             line = f1.readline()
             while line != "":               
                 k = TF(line)
@@ -207,7 +207,7 @@ def ecologie():
     tf_idf = TF_IDF("cleaned")
     n=0
     i=0
-    while i <len(tf_idf[0]) and tf_idf[0][i]!="Ã©cologique":
+    while i <len(tf_idf[0]) and tf_idf[0][i]!="écologique":
         i+=1
     n=i
     nom=len(president_nom)
@@ -225,7 +225,7 @@ def mots_evoques():
     temp_mot_double_discourt = []
     for i in range(len(files)):
         temp_mot_2 = []
-        with open("cleaned"+"/"+files[i], "r") as f1:
+        with open("cleaned"+"/"+files[i], "r", encoding="utf-8") as f1:
             line= f1.readline()
             line=line[:-1]
             while line !="":
@@ -256,16 +256,22 @@ def mots_evoques():
 def Tokenisation_question(chaine):
     chaine2=""
     for j in range(len(chaine)):
-        if chaine[j] in "'()[]:!;,?.-_" or chaine[j]=='"':
+        if 65<=ord(chaine[j])<=90:
+            chaine2=chaine2+chr(ord(chaine[j])+32)
+        elif chaine[j] in "'()[]:!;,?.-_" or chaine[j]=='"':
             if chaine[j]=="'"or chaine[j]=="-" :
                 chaine2=chaine2+" "
         else:
             chaine2=chaine2+chaine[j]
     return chaine2.split(" ")
 
-def intersection_corpus_question(L):
-    intersection=[]
-    for i in L:
-        if i in TF_IDF("cleaned")[0]:
-            intersection.append(i)
+def intersection_corpus_question(intersection): #L doit être une list 
+    mot_L= TF_IDF("cleaned")[0]
+    i=0
+    while i<len(intersection):
+        if intersection[i] in  mot_L: #recherche si i est dans les mot du corpus
+            del(intersection[i])
+        else:
+            i+=1
     return intersection
+print(intersection_corpus_question(Tokenisation_question("Suis-je bête?")))
