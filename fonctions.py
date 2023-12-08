@@ -252,3 +252,20 @@ def mots_evoques():
                     temp_mot_2.append(mot)
             temp_mot_1 = temp_mot_2
     print(temp_mot_1)
+
+def Tokenisation_question(chaine):
+    chaine2=""
+    for j in range(len(chaine)):
+        if chaine[j] in "'()[]:!;,?.-_" or chaine[j]=='"':
+            if chaine[j]=="'"or chaine[j]=="-" :
+                chaine2=chaine2+" "
+        else:
+            chaine2=chaine2+chaine[j]
+    return chaine2.split(" ")
+
+def intersection_corpus_question(L):
+    intersection=[]
+    for i in L:
+        if i in TF_IDF("cleaned")[0]:
+            intersection.append(i)
+    return intersection
