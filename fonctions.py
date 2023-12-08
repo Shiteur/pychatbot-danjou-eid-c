@@ -99,7 +99,7 @@ def IDF(cleaned):
                             mot.append(keys)
                 line = f1.readline()        
     for keys in IDF_score.keys() :
-        IDF_score[keys] = math.log(len(files)/IDF_score[keys]) 
+        IDF_score[keys] = math.log10(len(files)/IDF_score[keys]) 
     return IDF_score
 
 def TF_IDF(repertoire):
