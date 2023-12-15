@@ -265,13 +265,14 @@ def Tokenisation_question(chaine):
             chaine2=chaine2+chaine[j]
     return chaine2.split(" ")
 
-def intersection_corpus_question(intersection): #L doit être une list 
+def intersection_corpus_question(intersection): #L doit être une list
+    Tokenisation_question(intersection)        #appelle la la fonction précédentes pour supprimer les ponctuation et les majuscules.
+    mot_inutile =mot_pas_important()
     mot_L= TF_IDF("cleaned")[0]
     i=0
     while i<len(intersection):
-        if intersection[i] in  mot_L: #recherche si i est dans les mot du corpus
+        if intersection[i] not in  mot_L or intersection[i] in mot_inutile:       #recherche si i est dans les mot du corpus
             del(intersection[i])
         else:
             i+=1
     return intersection
-print(intersection_corpus_question(Tokenisation_question("Suis-je bête?")))
