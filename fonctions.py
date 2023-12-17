@@ -75,9 +75,9 @@ def TF(chaine):
     mot[-1] = mot[-1][:-1]
     for i in range(len(mot)):
         if mot[i] in frequency.keys():
-            frequency[mot[i]] += 1/len(mot)
+            frequency[mot[i]] += 1
         else:
-            frequency[mot[i]] = 1/len(mot)
+            frequency[mot[i]] = 1
     return frequency
 
 def IDF(cleaned):
@@ -266,13 +266,46 @@ def Tokenisation_question(chaine):
     return chaine2.split(" ")
 
 def intersection_corpus_question(intersection): #L doit être une list
-    Tokenisation_question(intersection)        #appelle la la fonction précédentes pour supprimer les ponctuation et les majuscules.
-    mot_inutile =mot_pas_important()
     mot_L= TF_IDF("cleaned")[0]
     i=0
     while i<len(intersection):
-        if intersection[i] not in  mot_L or intersection[i] in mot_inutile:       #recherche si i est dans les mot du corpus
+        if intersection[i] not in  mot_L:       #recherche si i est dans les mot du corpus
             del(intersection[i])
         else:
             i+=1
     return intersection
+
+def vecteur_TF_IDF(intersection):
+    tf_idf = TF_IDF("cleaned")
+    IDF_score=IDF("cleaned")
+    mat_int=[]
+    for i in range(len(tf_idf[1][0])): #fait une transposé de materice.
+        L=[]
+        for j in range(len(tf_idf[1])):
+            L.append(tf_idf[1][j][i])
+        mat_int.append(L)
+    TF_question=[]
+    i=0
+    while i <len(intersection): #calcule le TF des mots de la question 
+        tf=1
+        j=i+1
+        while j <len(intersection):
+            if intersection[j]==intersection[i]:
+                tf+=1
+                del(intersection[j])
+            j+=1
+        TF_question.append(tf)
+        i+=1
+    print(intersection)
+    for key, val in IDF_score.items(): #calcule du TF_IDF de la question
+        inter=True
+        j=0
+        while j < len(intersection) and inter:
+            if intersection[j]== key:
+                L.append(TF_question[j]*val)
+                inter=False
+            j+=1
+        if inter:                      
+            L.append(0*val)
+    mat_int.append(L)
+    return tf_idf[0],mat_int
