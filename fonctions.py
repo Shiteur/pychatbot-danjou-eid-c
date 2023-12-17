@@ -296,7 +296,7 @@ def vecteur_TF_IDF(intersection):
             j+=1
         TF_question.append(tf)
         i+=1
-    print(intersection)
+    L=[]
     for key, val in IDF_score.items(): #calcule du TF_IDF de la question
         inter=True
         j=0
@@ -309,3 +309,72 @@ def vecteur_TF_IDF(intersection):
             L.append(0*val)
     mat_int.append(L)
     return tf_idf[0],mat_int
+######début du calcule de similarité
+def produit_scalaire(vecteur1,vecteur2):#calcule le produits scalaire de deux vecteurs de longueur identique
+    if len(vecteur1)==len(vecteur2):
+        somme=0
+        for i in range(len(vecteur1)):
+            somme += vecteur1[i]*vecteur2[i]
+        return somme
+    else:
+        return "calcule du produit scalaire impossible."
+
+def norme_vecteur(vecteur):
+    somme=0
+    for i in range(len(vecteur)):
+        somme+= vecteur[i]**2
+    return math.sqrt(somme)
+
+def similarite(vecteur1,vecteur2): #calcule la similarité de deux vecteurs de longueur identique
+    return produit_scalaire(vecteur1,vecteur2)/(norme_vecteur(vecteur1)*norme_vecteur(vecteur2))
+######fin du calcule de similarité
+def document_pertinent(mat_doc,vecteur_question,list_files_names):
+    pertinent=similarite(mat_doc[0],vecteur_question)
+    fichier=list_files_names[0]
+    for i in range(1,len(mat_doc)):
+        if pertinent<similarite(mat_doc[i],vecteur_question):
+            pertinent=similarite(mat_doc[i],vecteur_question)
+            fichier=list_files_names[i]
+    return fichier
+
+def generation_reponse(Question):                   #Génère une raponse à une chaine de carcatère
+    files=list_of_files("cleaned", "txt")
+    Question=vecteur_TF_IDF(intersection_corpus_question(Tokenisation_question(Question)))
+    mat=Question[1][:-1]
+    #début de la recherche du mot le plus important
+    mot_important=Question[1][-1][0]
+    indice=0
+    for i in range(len(Question[1][-1])):
+        if mot_important<Question[1][-1][i]:
+            mot_important=Question[1][-1][i]
+            indice=i
+    mot_important=Question[0][indice]
+    #fin de la recherche du mot le plus important de la question
+    Question=Question[1][-1]
+    text_important=document_pertinent(mat,Question,files)
+    with open("speeches/"+text_important, "r", encoding="utf-8")as f:
+        fichier=f.readlines()
+        i=0
+        trouve=True
+        reponse="..."
+        while i<len(fichier) and trouve:
+            if mot_important in fichier[i]:
+                reponse=fichier[i]
+                trouve=False
+            i+=1
+    return reponse
+
+def affine_reponse(Question, Reponse):
+    question_starter={"Comment": "Après analyse, ","Pourquoi": "Car, ","Peux-tu": "Oui, bien sûr!"}
+    reponse_starter=""
+    Question=Question.split(" ")
+    for key,val in question_starter.items():
+        if key==Question[0]:
+            reponse_starter=val
+    if reponse_starter=="":
+        reponse_starter="Je ne connais pas cette question mais je dirais, "
+    if reponse_starter[-1]== " ":
+        reponse_starter+=chr(ord(Reponse[0])-32)
+    else:
+        reponse_starter+=Reponse[0]
+    return reponse_starter+Reponse[1:]
