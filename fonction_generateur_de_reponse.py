@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script qui permet de générer une réponse à une question donné.
+# chatbot2000,Rayan EID et Thomas DANJOU,script qui permet de générer une réponse à une question donné.
 import math
 from fonctions_de_bases import *
 from fonction_methodeTFIDF import *

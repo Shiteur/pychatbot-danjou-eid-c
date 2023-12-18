@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script contenant les fonctonnalités demandé à développer.
+# chatbot2000,Rayan EID et Thomas DANJOU,script contenant les fonctonnalités demandé à développer.
 from fonctions_de_bases import *
 from fonction_methodeTFIDF import *
 #Cette fonction retourne la liste des mots du dossier cleaned ayant un TF-IDF=0.Il n'y a pas besoin de varible pour cette fonction.

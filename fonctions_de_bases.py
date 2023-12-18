@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script contenant les fonctions fondamentales du projet. 
+# chatbot2000,Rayan EID et Thomas DANJOU,script contenant les fonctions fondamentales du projet. 
 import os
 #fonction qui retourne la liste de fichier contenant une certaine extention dans un dossier. Deux arguments à donner le dossier et l'extention les deux sous forme de chaîne de caractères.
 #Les nom de variable sont explicite avec dossier pour signifié le nom du dossier et la varible extention pour l'extention.

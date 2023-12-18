@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script contenant l'affichage de l'interface menu.
+# chatbot2000,Rayan EID et Thomas DANJOU,script contenant l'affichage de l'interface menu.
 #fonction permettant d'afficher le menu principale, pas besoin de paramètre.
 def menu():
     print("1. Pour accéder aux fonctionnalités classiques.")

@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script principal du projet.
+# chatbot2000,Rayan EID et Thomas DANJOU,script principal du projet.
 from fonctions_de_bases import *
 from fonction_menu import *
 from fonctions_fonctionnalites import *

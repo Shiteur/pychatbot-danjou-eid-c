@@ -1,4 +1,4 @@
-# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script permetant de calculer le TF,l'IDF et le TF-IDF d'un élément donné.
+# chatbot2000,Rayan EID et Thomas DANJOU,script permetant de calculer le TF,l'IDF et le TF-IDF d'un élément donné.
 from fonctions_de_bases import *
 import math
 #Prend en paramètre une chaîne de caractères et retourne le nombre d'occurence de chaque mot dans cette chaine de caraèteres.
