@@ -1,6 +1,5 @@
 # chatbot2000
-#####
-Le Projet Chatbot2000 a été réalisé par Rayan EID et Thomas DANJOU.
+#####Le Projet Chatbot2000 a été réalisé par Rayan EID et Thomas DANJOU.
 #####
 Afin de pouvoir utilisé il est conseillé de ne pas modifié les fichiers scripts car cela pourrait entrainer un non fonctionnement du projet.
 Si vous avez des problèmes liéer au script n'hésitez pas à vous rendre sur le GitHub à l'adresse suivante: https://github.com/Shiteur/pychatbot-danjou-eid-d.
