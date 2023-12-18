@@ -138,8 +138,9 @@ def affine_reponse(Question, Reponse):
             reponse_starter=val
     if reponse_starter=="":
         reponse_starter="Je ne connais pas cette question mais je dirais, "
-    if reponse_starter[-1]== " ":
-        reponse_starter+=chr(ord(Reponse[0])-32)
+    if reponse_starter[-1]== " " and 64<ord(Reponse[0])<91:
+        val=chr(ord(Reponse[0])+32)
+        reponse_starter+=val
     else:
         reponse_starter+=Reponse[0]
     return reponse_starter+Reponse[1:]

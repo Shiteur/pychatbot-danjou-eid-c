@@ -15,9 +15,9 @@ while start:
     if choix =="1":
        decision=1
     elif choix == "2":
-        print("Vous quitter l'aplication.")
         decision=2
     elif choix== "3":
+        print("Vous quitter l'aplication.")
         start=False
     else:
         print("Choix invalide.")
