@@ -97,7 +97,7 @@ def document_pertinent(mat_doc,vecteur_question,list_noms):
     return fichier
 #Cette fonction retourne une réponse à une question que l'on entre en entré. L'entré est une chaîne de caractères tout comme la sorti de cette fonction.
 #La variable question est très explicite car on attend en entré une question.
-def generation_reponse(Question):                   #Génère une raponse à une chaine de carcatère
+def generation_reponse(Question):
     files=list_of_files("cleaned", "txt")
     Question=vecteur_TF_IDF(intersection_corpus_question(Tokenisation_question(Question)))
     mat=Question[1][:-1]

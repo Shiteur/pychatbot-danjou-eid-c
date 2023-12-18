@@ -49,7 +49,7 @@ while start:
         choix=input("Choisissez une option: ")
         if choix=="1":
             question=input("Entez votre question:")
-            print(affine_reponse(question,generateur_de_reponse(question)))
+            print(affine_reponse(question,generation_reponse(question)))
         elif choix=="2":
             print("Vous retrouner au menu principal.")
             decision=0
