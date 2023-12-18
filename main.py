@@ -1,27 +1,12 @@
-from fonctions import *
-# appelle la fonction list_of_files
-directory = "speeches"
-files_names = list_of_files(directory, "txt")
-# appelle la fonction convertion_minuscule
+# pychatbot-danjou-eid-d,Rayan EID et Thomas DANJOU,script principal du projet.
+from fonctions_de_bases import *
+from fonction_menu import *
+from fonctions_fonctionnalites import *
+from fonction_generateur_de_reponse import *
+# permet de faire un traitement de tous les fichiers du répertoire speeches lors du lancement du script.
 convertion_minuscule()
 surpession_ponctuation()
-
-def menu():
-    print("1. Pour accéder aux fonctionnalités classiques.")
-    print("2. Pour accéder au générateur de réponses automatiques.")
-    print("3. Pour quitter.")
-def fonctionnalites():
-    print("Les fonctionnalités classiques:")
-    print("1. Affiche la liste des mots les moins importants")
-    print("2. Affiche le mot avec le score TD-IDF le plus élevé")
-    print("3. Indique le(s) mot(s) le(s) plus répété(s) par le président Chirac")
-    print("4. Indique le(s) nom(s) du (des) président(s) qui a (ont) parlé de la « Nation »")
-    print("5. Indique le premier président à parler du climat et/ou de l'écologie")
-    print("6. Mot(s) évoqués par tous les présidents (hormis les mots non importants)")
-    print("7. Pour retourner en arrière.")
-def generateur_de_reponse():
-    print("1. Pour poser une question.")
-    print("2. Pour retourner en arrière.")
+#corp du script principal permettant d'appeler les fonctions développé dans les autres scripts .py sur la demande du l'utilisateur.
 start=True
 while start:
     decision=0
