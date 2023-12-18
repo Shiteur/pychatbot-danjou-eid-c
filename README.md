@@ -1,4 +1,5 @@
 # chatbot2000
+#####
 Le Projet Chatbot2000 a été réalisé par Rayan EID et Thomas DANJOU.
 Afin de pouvoir utilisé il est conseillé de ne pas modifié les fichiers scripts car cela pourrait entrainer un non fonctionnement du projet.
 Si vous avez des problèmes liéer au script n'hésitez pas à vous rendre sur le GitHub à l'adresse suivante: https://github.com/Shiteur/pychatbot-danjou-eid-d.
@@ -9,3 +10,4 @@ L'autre option permet à l'utilisateur de saisir une question de son choix au Ch
 Il n'existe aucun bug connu autour du Chatbot2000.
 Nous vous remercions pour votre utilisation du Chatbot2000.
 Rayan EID et Thomas DANJOU
+#####
