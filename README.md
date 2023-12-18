@@ -13,4 +13,3 @@ L'autre option permet à l'utilisateur de saisir une question de son choix au Ch
 Il n'existe aucun bug connu autour du Chatbot2000.
 Nous vous remercions pour votre utilisation du Chatbot2000.
 Rayan EID et Thomas DANJOU
-#####
